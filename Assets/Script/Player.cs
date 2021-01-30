@@ -5,9 +5,8 @@ public class Player : MonoBehaviour, IActorTemplate
     int travelSpeed;
     int health;
     int hitPower;
-    GameObject actor;
     GameObject fire;    
-	GameObject _Player;
+ 
 	
     public int Health
     {
@@ -21,11 +20,7 @@ public class Player : MonoBehaviour, IActorTemplate
         set {fire = value;}
     }
     
-	void Start()
-	{
-	   
-	   _Player = GameObject.Find("_Player");
-	}
+ 
 	
 	 void Update ()
 	{
