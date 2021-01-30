@@ -5,7 +5,7 @@ public class SOActorModel : ScriptableObject
 { 
     public string actorName;
     public AttackType attackType;
-	public enum AttackType { enemy, player }
+	public enum AttackType { enemy, player,human }
 	public string description;
     public int health;
     public float speed;
