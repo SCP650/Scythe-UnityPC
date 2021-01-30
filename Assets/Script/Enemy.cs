@@ -7,11 +7,13 @@ public class Enemy : MonoBehaviour, IActorTemplate
  int fireSpeed;
  int hitPower;
  int score;
- 
  float time;
- 
- void Update ()
+
+public Transform target; //can be the player or innocent
+
+void Update ()
  {
+	 Move();
      Attack();
  }
  
@@ -22,8 +24,13 @@ public class Enemy : MonoBehaviour, IActorTemplate
 	hitPower = actorModel.hitPower;
 	score = actorModel.score;
  }
- 
- public void Die()
+
+public void Move()
+{
+		transform.position =  Vector3.MoveTowards(transform.position, target.position,0.2f);
+}
+
+    public void Die()
  {
 	Destroy(this.gameObject);
  }
