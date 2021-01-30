@@ -389,6 +389,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   travelSpeed: 8
+  isAttackingRight: 0
+  isAttacking: 0
+  canSwapDirection: 0
+  attackBox: {fileID: 4420595376170878395}
 --- !u!54 &8284753971223826495
 Rigidbody:
   m_ObjectHideFlags: 0

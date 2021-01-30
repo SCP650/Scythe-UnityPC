@@ -13,9 +13,13 @@ public class Player : MonoBehaviour, IActorTemplate
 	Rigidbody rb;
 	private Camera mainCamera;
 
-	private bool isAttackingRight;
-	private bool isAttacking;
+	public bool isAttackingRight;
+	public bool isAttacking;
+	public bool canSwapDirection;
 	private Animator playerAnimator;
+
+	[SerializeField]
+	private GameObject attackBox;
 
     public int Health
     {
@@ -43,12 +47,15 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	void Update ()
 	{
-		playerAnimator.SetBool("right", isAttackingRight);
-		if (playerAnimator.GetBool("attacking"))
-        {
-			isAttacking = false;
+		if (!isAttacking) {
+			// isAttackingRight = !isAttackingRight;
+			// canSwapDirection = false;
+			// playerAnimator.SetBool("attacking", false);
 		}
-		// isAttacking = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.SwingLeft") || playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.SwingRight");
+
+		playerAnimator.SetBool("right", isAttackingRight);
+		isAttacking = attackBox.activeSelf;
+
 		Attack();
 	}
 
@@ -74,7 +81,7 @@ public class Player : MonoBehaviour, IActorTemplate
 	{
 		return hitPower;
 	}
-	
+
 	void Movement()
 	{
 		float x = Input.GetAxis("Horizontal");
@@ -87,13 +94,16 @@ public class Player : MonoBehaviour, IActorTemplate
 			rb.velocity = Vector3.zero;
 		}
 
-		Vector3 fromPosition = rb.position;
-		Vector3 cameraMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+		if (!isAttacking)
+        {
+			Vector3 fromPosition = rb.position;
+			Vector3 cameraMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-		Vector3 diff = (fromPosition - cameraMousePosition);
-		diff.y = 0;
+			Vector3 diff = (fromPosition - cameraMousePosition);
+			diff.y = 0;
 
-		rb.MoveRotation(Quaternion.LookRotation(diff));
+			rb.MoveRotation(Quaternion.LookRotation(diff));
+		}
 
 		// print(fromPosition - cameraMousePosition);
 	}
@@ -106,14 +116,14 @@ public class Player : MonoBehaviour, IActorTemplate
 	
 	public void Attack()
 	{
-		if (!isAttacking)
+		if (Input.GetButtonDown("Attack") && !isAttacking)
         {
-			if (Input.GetButtonDown("Attack"))
-			{
-				isAttackingRight = !isAttackingRight;
-				playerAnimator.SetBool("attacking", true);
-				isAttacking = true;
-			}
-        }
+			isAttackingRight = !isAttackingRight;
+			// playerAnimator.SetBool("attacking", true);
+			playerAnimator.SetTrigger("attacking");
+			isAttacking = true;
+			// canSwapDirection = true;
+			// isAttacking = true;
+		}
 	}
 }
