@@ -91,17 +91,15 @@ public class Player : MonoBehaviour, IActorTemplate
 	void Movement()
 	{
 		float x = Input.GetAxis("Horizontal");
-		float y = Input.GetAxis("Vertical");
+		float z = Input.GetAxis("Vertical");
 
-		rb.MovePosition(transform.position + new Vector3(x, y, 0) * travelSpeed * Time.fixedDeltaTime);
+		rb.MovePosition(transform.position + new Vector3(x, 0, z) * travelSpeed * Time.fixedDeltaTime);
 
 		Vector3 fromPosition = rb.position;
 		Vector3 cameraMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-		// cameraMousePosition.z = 0;
 
 		Vector3 diff = (fromPosition - cameraMousePosition);
-		diff.z = 0;
-		// float rotationX = Mathf.Atan2(difference.z, difference.y) * Mathf.Rad2Deg;
+		diff.y = 0;
 
 		// print(fromPosition - cameraMousePosition);
 		rb.MoveRotation(Quaternion.LookRotation(diff));
