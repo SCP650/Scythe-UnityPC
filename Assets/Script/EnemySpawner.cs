@@ -27,7 +27,10 @@ public class EnemySpawner : MonoBehaviour
 	GameObject enemyUnit = CreateEnemy();
 	enemyUnit.gameObject.transform.SetParent(this.transform);
 	enemyUnit.transform.position = new Vector3( Random.Range(-MapWidth/2,MapWidth/2),  0, Random.Range(-MapLength / 2, MapLength / 2));
-	yield return new WaitForSeconds(spwnRte); 
+
+			//enemyUnit.transform.Rotate(0, Random.Range(0, 360), 0);
+
+			yield return new WaitForSeconds(spwnRte); 
   }
    yield return null;
   }

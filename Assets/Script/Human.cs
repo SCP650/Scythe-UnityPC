@@ -47,6 +47,7 @@ public void Flee()
 			Vector3 disToPlayer = transform.position - target.transform.position;
 			Vector3 newPos = transform.position + disToPlayer;
 			agent.SetDestination(newPos);
+			agent.speed = 6;
         }
 }
 
