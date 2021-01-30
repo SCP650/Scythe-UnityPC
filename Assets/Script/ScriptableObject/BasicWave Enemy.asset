@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454270ba86f08ae4fab2ebf16b834170, type: 3}
   m_Name: BasicWave Enemy
   m_EditorClassIdentifier: 
-  actorName: enemy_wave
+  actorName: basic_enemy
   attackType: 0
   description: Typically in groups.
   health: 1
