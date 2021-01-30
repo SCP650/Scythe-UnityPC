@@ -46,10 +46,10 @@ public class Enemy : MonoBehaviour, IActorTemplate
 private void OnCollisionEnter(Collision collision)
 {
 		// if the enemy collide with player
-		Debug.Log("hit player");
+ 
 		if (collision.gameObject.tag == "Player")
 		{
-			Debug.Log("actually hit players");
+	 
 			animator.SetTrigger("Hit");
 			collision.gameObject.GetComponent<IActorTemplate>().TakeDamage(hitPower);
 			
@@ -60,6 +60,11 @@ private void OnCollisionEnter(Collision collision)
  public void TakeDamage(int incomingDamage)
  {
 	health -= incomingDamage;
+	if(health < 0)
+        {
+			Die();
+        }
+       
  }
  
  public int SendDamage()
