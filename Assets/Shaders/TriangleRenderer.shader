@@ -13,13 +13,15 @@
     }
     SubShader
     {
-        Tags { "Queue" = "Transparent" }
+        Tags { "RenderType"="Overlay" }
         // draw after all opaque geometry has been drawn
         Pass 
         {
 
             ZWrite Off // don't write to depth buffer 
            // in order not to occlude other objects
+
+            ZTest Always
 
             Blend SrcAlpha OneMinusSrcAlpha // use alpha blending
 
