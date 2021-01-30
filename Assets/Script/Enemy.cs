@@ -3,7 +3,7 @@
 public class Enemy : MonoBehaviour, IActorTemplate
 {
  int health;
- int travelSpeed;
+ float travelSpeed;
  int fireSpeed;
  int hitPower;
  int score;
@@ -27,7 +27,7 @@ void Update ()
 
 public void Move()
 {
-		transform.position =  Vector3.MoveTowards(transform.position, target.position,0.2f);
+		transform.position =  Vector3.MoveTowards(transform.position, target.position,travelSpeed);
 }
 
     public void Die()
