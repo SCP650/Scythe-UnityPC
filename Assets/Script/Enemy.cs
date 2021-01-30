@@ -1,23 +1,19 @@
 ﻿using UnityEngine;
 
-public class EnemyWave : MonoBehaviour, IActorTemplate
+public class Enemy : MonoBehaviour, IActorTemplate
 {
  int health;
  int travelSpeed;
  int fireSpeed;
  int hitPower;
  int score;
- 
- //specfic for wave enemy
- [SerializeField]
- float verticalSpeed = 2;
- [SerializeField]
- float verticalAmplitude = 1;
- Vector3 sineVer;
  float time;
- 
- void Update ()
+
+public Transform target; //can be the player or innocent
+
+void Update ()
  {
+	 Move();
      Attack();
  }
  
@@ -28,8 +24,13 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
 	hitPower = actorModel.hitPower;
 	score = actorModel.score;
  }
- 
- public void Die()
+
+public void Move()
+{
+		transform.position =  Vector3.MoveTowards(transform.position, target.position,0.2f);
+}
+
+    public void Die()
  {
 	Destroy(this.gameObject);
  }
@@ -64,9 +65,6 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
  public void Attack()
  {
 	time += Time.deltaTime;
-	sineVer.y = Mathf.Sin(time * verticalSpeed) * verticalAmplitude;
-	transform.position = new Vector3(transform.position.x + travelSpeed * Time.deltaTime,
-	transform.position.y + sineVer.y,
-	transform.position.z);
+ 
  }
  }

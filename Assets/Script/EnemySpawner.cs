@@ -10,21 +10,23 @@ public class EnemySpawner : MonoBehaviour
  [SerializeField]
  [Range(0,10)]
  int quantity;
- GameObject enemies;
- 
- void Awake()
+ [SerializeField] int MapLength;
+ [SerializeField] int MapWidth;
+	[SerializeField] Transform Player;
+
+
+	void Awake()
  {
-	enemies = GameObject.Find("_Enemies");
-	StartCoroutine(FireEnemy(quantity, spawnRate));
+	StartCoroutine(SpawnEnemy(quantity, spawnRate));
  }
  
- IEnumerator FireEnemy(int qty, float spwnRte)
+ IEnumerator SpawnEnemy(int qty, float spwnRte)
  {
   for (int i = 0; i < qty; i++)
   {
 	GameObject enemyUnit = CreateEnemy();
 	enemyUnit.gameObject.transform.SetParent(this.transform);
-	enemyUnit.transform.position = transform.position;
+	enemyUnit.transform.position = new Vector3( Random.Range(-MapWidth/2,MapWidth/2),  0, Random.Range(-MapLength / 2, MapLength / 2));
 	yield return new WaitForSeconds(spwnRte); 
   }
    yield return null;
@@ -34,7 +36,8 @@ public class EnemySpawner : MonoBehaviour
   {
 	GameObject enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
 	enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
-	enemy.name = actorModel.actorName.ToString();
+		enemy.GetComponent<Enemy>().target = Player;
+		enemy.name = actorModel.actorName.ToString();
 	return enemy;
   }
 }
