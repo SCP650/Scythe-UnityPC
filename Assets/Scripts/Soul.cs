@@ -15,21 +15,46 @@ public enum SlayType
 public struct SoulTracker
 {
     public SlayType type;
-    public int watchedValue;
+    public float watchedValue;
     public UnityEvent onCrossOver;
     public UnityEvent onCrossBack;
 }
 
 public class Soul : MonoBehaviour
 {
+    private static Soul Singleton;
+    public static Soul singleton
+    {
+        get
+        {
+            if (!Singleton)
+            {
+                Singleton = GameObject.FindGameObjectWithTag("Player").GetComponent<Soul>();
+            }
+            return Singleton;
+        }
+        set
+        {
+            Singleton = value;
+        }
+    }
+
     public int numHumans = 0;
     public int numDemons = 0;
 
+    public int numKilled
+    {
+        get { return numHumans + numDemons; }
+    }
+
+    public int startExpandingAt;
+    public int stopExpandingAt;
+
     public List<SoulTracker> trackedValues;
 
-    public int percentDemonSlayer = 0;
-    public int percentHumanSlayer = 0;
-    public int percentMixedSlayer = 100;
+    public float percentDemonSlayer = 0;
+    public float percentHumanSlayer = 0;
+    public float percentMixedSlayer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -50,21 +75,21 @@ public class Soul : MonoBehaviour
         int soloHuman = numHumans - mixed;
         int total = (mixed + soloDemon + soloHuman);
 
-        int newMixedPercent = percentMixedSlayer;
-        int newHumanPercent = percentHumanSlayer;
-        int newDemonPercent = percentDemonSlayer;
+        float newMixedPercent = percentMixedSlayer;
+        float newHumanPercent = percentHumanSlayer;
+        float newDemonPercent = percentDemonSlayer;
 
         if (total > 0)
         {
-            newMixedPercent = (100 * mixed) / total;
-            newHumanPercent = (100 * soloHuman) / total;
-            newDemonPercent = (100 * soloDemon) / total;
+            newMixedPercent = ((float) mixed) / total;
+            newHumanPercent = ((float) soloHuman) / total;
+            newDemonPercent = ((float) soloDemon) / total;
         }
 
         foreach (SoulTracker tracked in trackedValues)
         {
-            int oldVal = 0;
-            int newVal = 0;
+            float oldVal = 0;
+            float newVal = 0;
             switch (tracked.type)
             {
                 case SlayType.Human:
@@ -98,5 +123,10 @@ public class Soul : MonoBehaviour
         percentDemonSlayer = newDemonPercent;
         percentHumanSlayer = newHumanPercent;
         percentMixedSlayer = newMixedPercent;
+    }
+
+    public void printSomething()
+    {
+        print("This fired!");
     }
 }
