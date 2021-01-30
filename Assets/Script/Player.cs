@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
  
 public class Player : MonoBehaviour, IActorTemplate
 {
@@ -24,7 +25,17 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	public static Player S;
 
-    public int Health
+	private bool blockRotation = false;
+	private bool isDashing = false;
+
+	[SerializeField]
+	private float cooldownMax = 2.0f;
+	[SerializeField]
+	private float dashMax = 0.5f;
+	[SerializeField]
+	private float dashSpeedModifier = 3.0f;
+
+	public int Health
     {
         get {return health;}
         set {health = value;}
@@ -52,12 +63,6 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	void Update ()
 	{
-		if (!isAttacking) {
-			// isAttackingRight = !isAttackingRight;
-			// canSwapDirection = false;
-			// playerAnimator.SetBool("attacking", false);
-		}
-
 		playerAnimator.SetBool("right", isAttackingRight);
 		isAttacking = attackBox.activeSelf;
 
@@ -89,28 +94,36 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	void Movement()
 	{
-		float x = Input.GetAxis("Horizontal");
-		float z = Input.GetAxis("Vertical");
-
-		rb.MovePosition(transform.position + new Vector3(x, 0, z) * travelSpeed * Time.fixedDeltaTime);
-
-		if (x == 0 && z == 0)
-		{
-			rb.velocity = Vector3.zero;
-		}
-
-		if (!isAttacking)
+		if (!isDashing)
         {
-			Vector3 fromPosition = rb.position;
-			Vector3 cameraMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+			if (!blockRotation && Input.GetButtonDown("Dash"))
+            {
+				isDashing = true;
+				StartCoroutine(Dash());
+				return;
+            }
 
-			Vector3 diff = (fromPosition - cameraMousePosition);
-			diff.y = 0;
+			float x = Input.GetAxis("Horizontal");
+			float z = Input.GetAxis("Vertical");
 
-			rb.MoveRotation(Quaternion.LookRotation(diff));
+			rb.MovePosition(transform.position + new Vector3(x, 0, z) * travelSpeed * Time.fixedDeltaTime);
+
+			if (x == 0 && z == 0)
+			{
+				rb.velocity = Vector3.zero;
+			}
+
+			if (!blockRotation)
+			{
+				Vector3 fromPosition = rb.position;
+				Vector3 cameraMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+				Vector3 diff = (fromPosition - cameraMousePosition);
+				diff.y = 0;
+
+				rb.MoveRotation(Quaternion.LookRotation(diff));
+			}
 		}
-
-		// print(fromPosition - cameraMousePosition);
 	}
 	
 	public void Die()
@@ -121,14 +134,37 @@ public class Player : MonoBehaviour, IActorTemplate
 	
 	public void Attack()
 	{
-		if (Input.GetButtonDown("Attack") && !isAttacking)
+		if ((Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(0)) && !isAttacking)
         {
 			isAttackingRight = !isAttackingRight;
-			// playerAnimator.SetBool("attacking", true);
 			playerAnimator.SetTrigger("attacking");
 			isAttacking = true;
-			// canSwapDirection = true;
-			// isAttacking = true;
+			StartCoroutine(AttackCooldown());
 		}
 	}
+
+	private IEnumerator AttackCooldown()
+    {
+		float cooldownTimer = 0;
+		while (cooldownMax > cooldownTimer)
+        {
+			cooldownTimer += Time.deltaTime;
+			blockRotation = true;
+			yield return null;
+        }
+		blockRotation = false;
+    }
+	
+	private IEnumerator Dash()
+    {
+		float dashTimer = 0;
+		while (dashMax > dashTimer)
+		{
+			dashTimer += Time.deltaTime;
+			rb.MovePosition(transform.position - transform.forward * dashSpeedModifier * Time.deltaTime * (dashMax / dashTimer));
+			yield return null;
+        }
+		print("here");
+		isDashing = false;
+    }
 }
