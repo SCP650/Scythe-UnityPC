@@ -71,18 +71,6 @@ public void Flee()
 			Die();
 		}
 	}
-	else if (other.tag == "AttackBox")
-    {
-		if (health >= 1)
-		{
-			health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
-		}
-		if (health <= 0)
-		{
-			GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
-			Die();
-		}
-	}
  }
  
  public void TakeDamage(int incomingDamage)

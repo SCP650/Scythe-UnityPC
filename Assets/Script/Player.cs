@@ -6,23 +6,20 @@ public class Player : MonoBehaviour, IActorTemplate
     float travelSpeed;
 
     int health;
-	[SerializeField]
-    int hitPower = 1;
+    int hitPower;
     GameObject fire;
 	GameObject _Player;
 
 	Rigidbody rb;
 	private Camera mainCamera;
 
-	private bool isAttackingRight;
-	private bool isAttacking;
-	private bool canSwapDirection;
+	public bool isAttackingRight;
+	public bool isAttacking;
+	public bool canSwapDirection;
 	private Animator playerAnimator;
 
 	[SerializeField]
 	private GameObject attackBox;
-
-	public static Player S;
 
     public int Health
     {
@@ -40,13 +37,11 @@ public class Player : MonoBehaviour, IActorTemplate
     {
 		rb = GetComponent<Rigidbody>();
 		playerAnimator = GetComponent<Animator>();
-
-		S = this;
 	}
 
 	void Start()
 	{
-		_Player = GameObject.Find("_Player");
+	   _Player = GameObject.Find("_Player");
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 	}
 
