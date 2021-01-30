@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IActorTemplate
 {
@@ -9,12 +10,21 @@ public class Enemy : MonoBehaviour, IActorTemplate
  int score;
  float time;
 
-public Transform target; //can be the player or innocent
 
-void Update ()
+public Transform target; //can be the player or innocent
+	private NavMeshAgent agent;
+
+    private void Start()
+    {
+		agent = GetComponent<NavMeshAgent>();
+		
+	}
+
+    void Update ()
  {
-	 Move();
-     Attack();
+		agent.destination = target.position;
+		//Move();
+		Attack();
  }
  
  public void ActorStats(SOActorModel actorModel)
