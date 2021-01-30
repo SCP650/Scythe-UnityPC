@@ -998,6 +998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3293507506971924433, guid: 0edf2732d5b09ba40ada71c5586f6b09, type: 3}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8565458692412616974, guid: 0edf2732d5b09ba40ada71c5586f6b09, type: 3}
       propertyPath: m_Name
       value: Bush2 (25)
@@ -2291,6 +2295,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 809152644732955735, guid: a44daf1bbe42971459fc041b8a268566, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -17.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 809152644732955735, guid: a44daf1bbe42971459fc041b8a268566, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.5
+      objectReference: {fileID: 0}
     - target: {fileID: 809152646005640862, guid: a44daf1bbe42971459fc041b8a268566, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.95
