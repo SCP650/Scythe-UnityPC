@@ -56,6 +56,14 @@ private void OnCollisionEnter(Collision collision)
 		}
 	}
 
+	private void OnTriggerEnter(Collider other)
+    {
+		if (other.gameObject.tag == "AttackBox")
+		{
+			print(Player.S.SendDamage());
+			TakeDamage(Player.S.SendDamage());
+		}
+    }
  
  public void TakeDamage(int incomingDamage)
  {
