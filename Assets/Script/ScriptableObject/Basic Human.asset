@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 454270ba86f08ae4fab2ebf16b834170, type: 3}
-  m_Name: BasicWave Enemy
+  m_Name: Basic Human
   m_EditorClassIdentifier: 
-  actorName: basic_enemy
-  attackType: 0
-  description: Typically in groups.
+  actorName: basic_human
+  attackType: 2
+  description: These are innocent blocks
   health: 1
   speed: 0.1
   hitPower: 1
-  actor: {fileID: 4179899809963747741, guid: fae742ddc297a41f98c84d8a2b1863f7, type: 3}
+  actor: {fileID: 978053897438595157, guid: 516a17298481444cb9f2aa60825222b3, type: 3}
   actorsBullets: {fileID: 0}
   score: 200
