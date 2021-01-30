@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &77288162 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6142731343195453218, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+  m_PrefabInstance: {fileID: 6142731341911023895}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &193892928
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +162,7 @@ MonoBehaviour:
   quantity: 10
   MapLength: 100
   MapWidth: 100
+  Player: {fileID: 77288162}
 --- !u!4 &193892930
 Transform:
   m_ObjectHideFlags: 0
