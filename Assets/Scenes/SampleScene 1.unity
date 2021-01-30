@@ -825,8 +825,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numHumans: 0
   numDemons: 0
-  startExpandingAt: 0
-  stopExpandingAt: 0
+  startExpandingAt: 10
+  stopExpandingAt: 40
   trackedValues: []
   percentDemonSlayer: 0
   percentHumanSlayer: 0
@@ -2619,7 +2619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorModel: {fileID: 11400000, guid: 7a6a0d576f734bc4fb681fb0aa23c7b7, type: 2}
   spawnRate: 0.5
-  quantity: 10
+  quantity: 40
   MapLength: 100
   MapWidth: 100
   Player: {fileID: 743159203}
