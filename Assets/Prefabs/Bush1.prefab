@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 7547335133182900896}
   - component: {fileID: 5482866752753136873}
   m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  m_Name: Bush1
+  m_TagString: Bush
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
