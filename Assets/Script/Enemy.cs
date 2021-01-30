@@ -60,6 +60,11 @@ private void OnCollisionEnter(Collision collision)
  public void TakeDamage(int incomingDamage)
  {
 	health -= incomingDamage;
+	if(health < 0)
+        {
+			Die();
+        }
+       
  }
  
  public int SendDamage()
