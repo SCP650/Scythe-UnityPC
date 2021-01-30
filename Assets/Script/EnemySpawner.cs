@@ -10,15 +10,14 @@ public class EnemySpawner : MonoBehaviour
  [SerializeField]
  [Range(0,10)]
  int quantity;
- GameObject enemies;
+ 
  
  void Awake()
  {
-	enemies = GameObject.Find("_Enemies");
-	StartCoroutine(FireEnemy(quantity, spawnRate));
+	StartCoroutine(SpawnEnemy(quantity, spawnRate));
  }
  
- IEnumerator FireEnemy(int qty, float spwnRte)
+ IEnumerator SpawnEnemy(int qty, float spwnRte)
  {
   for (int i = 0; i < qty; i++)
   {
