@@ -2,12 +2,17 @@
  
 public class Player : MonoBehaviour, IActorTemplate
 {
-    int travelSpeed;
+	[SerializeField]
+    float travelSpeed;
+
     int health;
     int hitPower;
-    GameObject fire;    
- 
-	
+    GameObject fire;
+	GameObject _Player;
+
+	Rigidbody rb;
+	private Camera mainCamera;
+
     public int Health
     {
         get {return health;}
@@ -19,14 +24,27 @@ public class Player : MonoBehaviour, IActorTemplate
         get {return fire;}
         set {fire = value;}
     }
-    
- 
-	
-	 void Update ()
+
+	void Awake()
+    {
+		rb = GetComponent<Rigidbody>();
+    }
+
+	void Start()
 	{
-		Movement();
+	   _Player = GameObject.Find("_Player");
+		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+	}
+
+	void Update ()
+	{
 		Attack();
 	}
+
+	void FixedUpdate()
+    {
+		Movement();
+    }
 	
 	public void ActorStats(SOActorModel actorModel)
 	{
@@ -72,7 +90,21 @@ public class Player : MonoBehaviour, IActorTemplate
 	
 	void Movement()
 	{
-		//input check and move : )
+		float x = Input.GetAxis("Horizontal");
+		float y = Input.GetAxis("Vertical");
+
+		rb.MovePosition(transform.position + new Vector3(x, y, 0) * travelSpeed * Time.fixedDeltaTime);
+
+		Vector3 fromPosition = rb.position;
+		Vector3 cameraMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+		// cameraMousePosition.z = 0;
+
+		Vector3 diff = (fromPosition - cameraMousePosition);
+		diff.z = 0;
+		// float rotationX = Mathf.Atan2(difference.z, difference.y) * Mathf.Rad2Deg;
+
+		// print(fromPosition - cameraMousePosition);
+		rb.MoveRotation(Quaternion.LookRotation(diff));
 	}
 	
 	public void Die()
