@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 479256147}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,18 +413,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numHumans: 0
   numDemons: 0
+  startExpandingAt: 20
+  stopExpandingAt: 60
   trackedValues:
   - type: 1
-    watchedValue: 50
+    watchedValue: 0.5
     onCrossOver:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 479256147}
+          m_TargetAssemblyTypeName: Soul, Assembly-CSharp
+          m_MethodName: printSomething
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onCrossBack:
       m_PersistentCalls:
         m_Calls: []
   percentDemonSlayer: 0
   percentHumanSlayer: 0
-  percentMixedSlayer: 100
+  percentMixedSlayer: 0
 --- !u!4 &479256148
 Transform:
   m_ObjectHideFlags: 0
@@ -526,6 +540,7 @@ GameObject:
   - component: {fileID: 1315237677}
   - component: {fileID: 1315237679}
   - component: {fileID: 1315237678}
+  - component: {fileID: 1315237680}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -590,6 +605,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315237676}
   m_CullTransparentMesh: 0
+--- !u!114 &1315237680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315237676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d927b1226f764514593355721c0f1314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRadius: 0.2
+  maxRadius: 0.3
+  mixedColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  demonColor: {r: 1, g: 0, b: 0.23168182, a: 1}
+  humanColor: {r: 0.79416883, g: 1, b: 0, a: 1}
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1421973562
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
