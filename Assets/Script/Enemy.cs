@@ -3,27 +3,29 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IActorTemplate
 {
- int health;
- float travelSpeed;
- int fireSpeed;
- int hitPower;
- int score;
- float time;
+	int health;
+	float travelSpeed;
+	int fireSpeed;
+	int hitPower;
+	int score;
+	float time;
 
-
-public Transform target; //can be the player or innocent
+	public Transform target; //can be the player or innocent, will be set by EnemySpawner
 	private NavMeshAgent agent;
+	private Animator animator;
 
     private void Start()
+
     {
 		agent = GetComponent<NavMeshAgent>();
+		animator = GetComponent<Animator>();
 		
 	}
 
     void Update ()
  {
 		agent.destination = target.position;
-		//Move();
+	 
 		Attack();
  }
  
@@ -35,32 +37,25 @@ public Transform target; //can be the player or innocent
 	score = actorModel.score;
  }
 
-public void Move()
-{
-		transform.position =  Vector3.MoveTowards(transform.position, target.position,travelSpeed);
-}
-
+ 
     public void Die()
  {
 	Destroy(this.gameObject);
  }
- 
- void OnTriggerEnter(Collider other)
- {
-	// if the player or their bullet hits you....
-	if (other.tag == "Player")
-	{
-		if (health >= 1)
+
+private void OnCollisionEnter(Collision collision)
+{
+		// if the enemy collide with player
+		Debug.Log("hit player");
+		if (collision.gameObject.tag == "Player")
 		{
-			health -= other.GetComponent<IActorTemplate>().SendDamage();
-		}
-		if (health <= 0)
-		{
-			GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
-			Die();
+			Debug.Log("actually hit players");
+			animator.SetTrigger("Hit");
+			collision.gameObject.GetComponent<IActorTemplate>().TakeDamage(hitPower);
+			
 		}
 	}
- }
+
  
  public void TakeDamage(int incomingDamage)
  {

@@ -65,34 +65,6 @@ public class Player : MonoBehaviour, IActorTemplate
 		fire = actorModel.actorsBullets;
 	}
 	
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Enemy")
-		{
-			if (health >= 1)
-			{
-				if (transform.Find("energy +1(Clone)"))
-				{
-					Destroy(transform.Find("energy +1(Clone)").gameObject);
-					health -= other.GetComponent<IActorTemplate> ().SendDamage();
-				}
-				else
-				{
-					health -= 1;
-				}
-			}
-      
-			if (health <= 0)
-			{
-				Die();
-			}
-		}
-		else
-        {
-			rb.velocity = Vector3.zero;
-        }
-	}
-	
 	public void TakeDamage(int incomingDamage)
 	{
 		health -= incomingDamage;
