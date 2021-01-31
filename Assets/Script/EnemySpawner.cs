@@ -31,9 +31,10 @@ private int currentEnemyCount = 1;
 			for (int i = 0; i < qty; i++)
 			{
 				currentEnemyCount += i;
-				GameObject enemyUnit = CreateEnemy();
+				Vector3 position = new Vector3(Random.Range(-MapWidth / 2, MapWidth / 2), 0, Random.Range(-MapLength / 2, MapLength / 2));
+				GameObject enemyUnit = CreateEnemy(position);
 				enemyUnit.gameObject.transform.SetParent(this.transform);
-				enemyUnit.transform.position = new Vector3(Random.Range(-MapWidth / 2, MapWidth / 2), 0, Random.Range(-MapLength / 2, MapLength / 2));
+		
 
 				//enemyUnit.transform.Rotate(0, Random.Range(0, 360), 0);
 
@@ -51,19 +52,19 @@ private int currentEnemyCount = 1;
 
   }
   
-  GameObject CreateEnemy()
+  GameObject CreateEnemy(Vector3 position)
   {
 		GameObject enemy;
  
 		if(currentEnemyCount %7 == 0)
         {
-			  enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
+			  enemy = GameObject.Instantiate(ShooterEnemy.actor,position, Quaternion.identity) as GameObject;
 			enemy.GetComponent<ShooterEnemy>().target = Player;
 			enemy.GetComponent<IActorTemplate>().ActorStats(ShooterEnemy);
 		}
         else
         {
-            enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
+            enemy = GameObject.Instantiate(actorModel.actor,position, Quaternion.identity) as GameObject;
             enemy.GetComponent<Enemy>().target = Player;
             enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
    //         enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
