@@ -8,6 +8,22 @@ public class Player : MonoBehaviour, IActorTemplate
 
     int health;
 	[SerializeField]
+	int maxHealth;
+	float healthOverflow;
+	public float healthPerSecond;
+	public float HealthPerSecond
+    {
+		get
+        {
+			return healthPerSecond;
+        }
+        set
+        {
+			print($"Health per second is now {value}");
+			healthPerSecond = value;
+        }
+    }
+	[SerializeField]
     int hitPower = 1;
     GameObject fire;
 	GameObject _Player;
@@ -27,6 +43,7 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	private bool blockRotation = false;
 	private bool isDashing = false;
+	public bool canDash { get; set; }
 
 	[SerializeField]
 	private float cooldownMax = 2.0f;
@@ -44,6 +61,7 @@ public class Player : MonoBehaviour, IActorTemplate
         get {return health;}
         set {health = value;}
     }
+
    
     public GameObject Fire
     {
@@ -63,6 +81,8 @@ public class Player : MonoBehaviour, IActorTemplate
 	{
 		_Player = GameObject.Find("_Player");
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+		health = maxHealth;
+		healthPerSecond = 0;
 	}
 
 	void Update ()
@@ -71,7 +91,25 @@ public class Player : MonoBehaviour, IActorTemplate
 		isAttacking = attackBox.activeSelf;
 
 		if (!blockRotation)  Attack();
+		PassivelyHeal();
 	}
+
+	public void PassivelyHeal()
+    {
+		float healthBack = healthOverflow + healthPerSecond * Time.deltaTime;
+		print($"Health back on this fram is {healthBack}");
+		int intHealthback = (int)healthBack;
+		healthOverflow = healthBack - intHealthback;
+		health += intHealthback;
+		if (health > maxHealth)
+        {
+			health = maxHealth;
+        }
+		if (health <= 0)
+        {
+			Die();
+        }
+    }
 
 	void FixedUpdate()
     {
@@ -96,11 +134,16 @@ public class Player : MonoBehaviour, IActorTemplate
 		return hitPower;
 	}
 
+	public int GetMaxHealth()
+    {
+		return maxHealth;
+    }
+
 	void Movement()
 	{
 		if (!isDashing)
         {
-			if (!blockRotation && Input.GetButtonDown("Dash"))
+			if (!blockRotation && Input.GetButtonDown("Dash") && canDash)
             {
 				isDashing = true;
 				StartCoroutine(Dash());

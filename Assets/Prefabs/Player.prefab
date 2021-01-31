@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 8284753971223826495}
   - component: {fileID: 1813101647476060581}
   - component: {fileID: 7879039782974777568}
+  - component: {fileID: 5925499735514211352}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -637,6 +638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   travelSpeed: 8
+  maxHealth: 100
+  healthPerSecond: 0
   hitPower: 1
   attackBox: {fileID: 4420595376170878395}
   cooldownMax: 1
@@ -692,6 +695,155 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5925499735514211352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6142731343195453220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e27c170f1d689489a4f3714dc0de73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numHumans: 0
+  numDemons: 0
+  startExpandingAt: 30
+  stopExpandingAt: 120
+  startTrackingAt: 10
+  trackedValues:
+  - type: 0
+    watchedValue: 0.4
+    onCrossOver:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_canDash
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    onCrossBack:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_canDash
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - type: 1
+    watchedValue: 0.3
+    onCrossOver:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_HealthPerSecond
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 3
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onCrossBack:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_HealthPerSecond
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - type: 1
+    watchedValue: 0.6
+    onCrossOver:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_HealthPerSecond
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 5
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onCrossBack:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_HealthPerSecond
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 3
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - type: 1
+    watchedValue: 0.9
+    onCrossOver:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_HealthPerSecond
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: -4
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onCrossBack:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6142731343195453219}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: set_HealthPerSecond
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 5
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  percentDemonSlayer: 0
+  percentHumanSlayer: 0
+  percentMixedSlayer: 0
 --- !u!1 &6806839782361395879
 GameObject:
   m_ObjectHideFlags: 0

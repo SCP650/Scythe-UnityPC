@@ -53,6 +53,7 @@ public void Flee()
 
     public void Die()
  {
+		Soul.singleton.numHumans++;
 	Destroy(this.gameObject);
  }
  
