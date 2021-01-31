@@ -647,6 +647,10 @@ MonoBehaviour:
   tr: {fileID: 5111501678446728150}
   dashSpeedMultiplier: 4
   scythe: {fileID: 5453608199632274676}
+  blinkTime: 0.25
+  blinkColor: {r: 1, g: 0, b: 0, a: 1}
+  renderer: {fileID: 6974842655283972876}
+  bloodParticleSystem: {fileID: 5753816198695974468, guid: bb0745ec7e7ff56489cefdb35f562b1e, type: 3}
   projectile: {fileID: 7642687658275682471, guid: f8dc508055029ce418c92450a04c8199, type: 3}
   projectileForce: 30
   spawnLocation: {fileID: 6859508101082087259}
@@ -721,6 +725,7 @@ MonoBehaviour:
   trackedValues:
   - type: 0
     watchedValue: 0.4
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
@@ -753,6 +758,7 @@ MonoBehaviour:
           m_CallState: 2
   - type: 1
     watchedValue: 0.3
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
@@ -785,6 +791,7 @@ MonoBehaviour:
           m_CallState: 2
   - type: 1
     watchedValue: 0.6
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
@@ -817,6 +824,7 @@ MonoBehaviour:
           m_CallState: 2
   - type: 1
     watchedValue: 0.9
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:

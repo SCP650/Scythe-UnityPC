@@ -39,6 +39,7 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	[SerializeField]
 	private GameObject attackBox;
+	private Vector3 attackBoxBaseScale;
 
 	public static Player S;
 
@@ -59,10 +60,20 @@ public class Player : MonoBehaviour, IActorTemplate
 	[SerializeField]
 	private Transform scythe;
 	private TrailRenderer scytheRenderer;
-	private float baseScytheScale;
+	private Vector3 baseScytheScale;
 	
 	private float swingBaseSpeed = 1;
 	private float swingSpeed;
+
+	[SerializeField]
+	private float blinkTime = 1;
+	[SerializeField]
+	private Color blinkColor = Color.red;
+	private Material baseMaterial;
+	[SerializeField]
+	private Renderer renderer;
+	[SerializeField]
+	private GameObject bloodParticleSystem;
 
 	[Header("Projectile")]
 	[SerializeField]
@@ -80,6 +91,8 @@ public class Player : MonoBehaviour, IActorTemplate
 	private float swingSpeedMultiplier = 2;
 	[SerializeField]
 	private float scytheScaleMultiplier = 2;
+
+	private Coroutine blinkCoroutine;
 
 	public int Health
     {
@@ -111,8 +124,11 @@ public class Player : MonoBehaviour, IActorTemplate
 		scytheRenderer = scythe.GetComponent<TrailRenderer>();
 
 		currentSpeed = baseSpeed;
-		baseScytheScale = scythe.localScale.z;
+		baseScytheScale = scythe.localScale;
+		attackBoxBaseScale = attackBox.transform.localScale;
 		swingSpeed = swingBaseSpeed;
+
+		baseMaterial = renderer.material;
 	}
 
 	void Update ()
@@ -158,6 +174,9 @@ public class Player : MonoBehaviour, IActorTemplate
 	public void TakeDamage(int incomingDamage)
 	{
 		health -= incomingDamage;
+		if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
+		blinkCoroutine = StartCoroutine(BlinkHurt());
+		if (bloodParticleSystem) Instantiate(bloodParticleSystem, transform.position, transform.rotation);
 	}
  
 	public int SendDamage()
@@ -280,13 +299,50 @@ public class Player : MonoBehaviour, IActorTemplate
 	{
 		if (increase)
 		{
-			if (scythe.localScale.z < baseScytheScale * scytheScaleMultiplier) scythe.localScale = new Vector3(0, 0, baseScytheScale * scytheScaleMultiplier);
+			if (scythe.localScale.z < baseScytheScale.z * scytheScaleMultiplier)
+			{
+				scythe.localScale = new Vector3(baseScytheScale.x, baseScytheScale.y, baseScytheScale.z * scytheScaleMultiplier);
+				attackBox.transform.localScale = new Vector3(attackBoxBaseScale.x, attackBoxBaseScale.y, attackBoxBaseScale.z * scytheScaleMultiplier);
+			}
 		}
-		else scythe.localScale = new Vector3(0, 0, baseScytheScale);
+		else
+		{
+			scythe.localScale = baseScytheScale;
+			attackBox.transform.localScale = attackBoxBaseScale;
+		}
 	}
 
 	public void ToggleShootProojectile(bool projectileEnabled = true)
     {
 		canShootProjectile = projectileEnabled;
     }
+
+	private IEnumerator BlinkHurt()
+	{
+		Color baseColor = baseMaterial.color;
+
+		float blinkTimer = 0.0f;
+		while (blinkTimer < blinkTime)
+        {
+			blinkTimer += Time.deltaTime;
+			Color newColor = Color.Lerp(baseColor, blinkColor, blinkTimer / blinkTime);
+			Material m = new Material(baseMaterial.shader);
+			m.color = newColor;
+			renderer.material = m;
+			yield return null;
+        }
+
+		blinkTimer = 0.5f;
+		while (blinkTimer < blinkTime)
+		{
+			blinkTimer += Time.deltaTime;
+			Color newColor = Color.Lerp(blinkColor, baseColor, blinkTimer / blinkTime);
+			Material m = new Material(baseMaterial.shader);
+			m.color = newColor;
+			m = renderer.material;
+			yield return null;
+		}
+
+		renderer.material = baseMaterial;
+	}
 }
