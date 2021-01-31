@@ -18,9 +18,11 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
 	private int qty = 5;
 	private Animator animator;
 
-	
-	
-     void Start()
+	[SerializeField]
+	private GameObject bloodParticleSystemPrefab;
+
+
+	void Start()
 
     {
 		
@@ -52,6 +54,7 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
 	{
 		Soul.singleton.numDemons++;
 		GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
+		if (bloodParticleSystemPrefab) Instantiate(bloodParticleSystemPrefab, transform.position, transform.rotation);
 		Destroy(this.gameObject);
 	}
 

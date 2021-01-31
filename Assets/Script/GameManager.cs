@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 	public static int currentScene = 0;
 	public static int gameLevelScene = 3;
 	static GameManager instance;
+
+	public GameObject pauseCanvas;
 	
 	bool died = false;
 	public bool Died
@@ -26,7 +28,16 @@ public class GameManager : MonoBehaviour
  
    }
 
-	void CheckGameManagerIsInTheScene()
+    private void Update()
+    {
+        if (Input.GetButtonDown("Pause"))
+        {
+			Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+			if (pauseCanvas != null) pauseCanvas.SetActive(Time.timeScale == 0);
+        }
+    }
+
+    void CheckGameManagerIsInTheScene()
 	{
 	    if(instance == null)
     {
@@ -39,8 +50,6 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(this);
 	 
 	}
-
- 
 	
 	 public void LifeLost()
 	{

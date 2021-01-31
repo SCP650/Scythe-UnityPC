@@ -14,12 +14,14 @@ public class Enemy : MonoBehaviour, IActorTemplate
 	private NavMeshAgent agent;
 	private Animator animator;
 
+	[SerializeField]
+	private GameObject bloodParticleSystemPrefab;
+
     private void Start()
 
     {
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
-		
 	}
 
     void Update ()
@@ -42,6 +44,7 @@ public class Enemy : MonoBehaviour, IActorTemplate
 	{
 		Soul.singleton.numDemons++;
         GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
+		if (bloodParticleSystemPrefab) Instantiate(bloodParticleSystemPrefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
 	}
 

@@ -133,3 +133,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   EnemyDistanceToRun: 7
+  bloodParticleSystemPrefab: {fileID: 5753816198695974468, guid: 7cd39afdcdb9e8749a343f98c3583935, type: 3}
