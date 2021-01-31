@@ -7,19 +7,20 @@ public class HealthBar : MonoBehaviour
 {
     Player player;
     Image img;
-    int maxHealth;
+    float maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
         img = GetComponent<Image>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        maxHealth = player.Health; //TODO: Fill this in with an actual maxhealth var
+        maxHealth = player.GetMaxHealth();
     }
 
     // Update is called once per frame
     void Update()
     {
-        img.fillAmount = (player.Health / maxHealth);
+        print($"Health is {player.Health}");
+        img.fillAmount = ((float)player.Health / maxHealth);
     }
 }

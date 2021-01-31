@@ -49,6 +49,7 @@ public class Soul : MonoBehaviour
 
     public int startExpandingAt;
     public int stopExpandingAt;
+    public int startTrackingAt;
 
     public List<SoulTracker> trackedValues;
 
@@ -86,43 +87,48 @@ public class Soul : MonoBehaviour
             newDemonPercent = ((float) soloDemon) / total;
         }
 
-        foreach (SoulTracker tracked in trackedValues)
+        if (numKilled >= startTrackingAt)
         {
-            float oldVal = 0;
-            float newVal = 0;
-            switch (tracked.type)
+            foreach (SoulTracker tracked in trackedValues)
             {
-                case SlayType.Human:
-                    oldVal = percentHumanSlayer;
-                    newVal = newHumanPercent;
-                    break;
-                case SlayType.Demon:
-                    oldVal = percentDemonSlayer;
-                    newVal = newDemonPercent;
-                    break;
-                case SlayType.Mixed:
-                    oldVal = percentMixedSlayer;
-                    newVal = newMixedPercent;
-                    break;
-                default:
-                    Debug.LogError($"Switch called with value of unknown type {tracked.type}", this);
-                    break;
-            }
+                float oldVal = 0;
+                float newVal = 0;
+                switch (tracked.type)
+                {
+                    case SlayType.Human:
+                        oldVal = percentHumanSlayer;
+                        newVal = newHumanPercent;
+                        break;
+                    case SlayType.Demon:
+                        oldVal = percentDemonSlayer;
+                        newVal = newDemonPercent;
+                        break;
+                    case SlayType.Mixed:
+                        oldVal = percentMixedSlayer;
+                        newVal = newMixedPercent;
+                        break;
+                    default:
+                        Debug.LogError($"Switch called with value of unknown type {tracked.type}", this);
+                        break;
+                }
 
-            //Determine if we crossed over
-            if (tracked.watchedValue >= oldVal && tracked.watchedValue < newVal)
-            {
-                tracked.onCrossOver.Invoke();
+                //Determine if we crossed over
+                if (tracked.watchedValue >= oldVal && tracked.watchedValue < newVal)
+                {
+                    tracked.onCrossOver.Invoke();
+                }
+                else if (tracked.watchedValue >= newVal && tracked.watchedValue < oldVal)
+                {
+                    tracked.onCrossBack.Invoke();
+                }
             }
-            else if (tracked.watchedValue >= newVal && tracked.watchedValue < oldVal)
-            {
-                tracked.onCrossBack.Invoke();
-            }
-        }
 
         percentDemonSlayer = newDemonPercent;
         percentHumanSlayer = newHumanPercent;
         percentMixedSlayer = newMixedPercent;
+
+        }
+
     }
 
     public void printSomething()
