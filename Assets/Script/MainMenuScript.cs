@@ -6,9 +6,11 @@ public class MainMenuScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject creditsScreen;
+    [SerializeField] CanvasGroup pauseButtonCanvasGroup;
 
     public void LoadGame(string sceneName)
     {
+        pauseButtonCanvasGroup.interactable = false;
         FadeController.S.InitiateFade(sceneName);
     }
 

@@ -1141,6 +1141,7 @@ GameObject:
   - component: {fileID: 644073966}
   - component: {fileID: 644073965}
   - component: {fileID: 644073964}
+  - component: {fileID: 644073967}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1213,6 +1214,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &644073967
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644073963}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &906387411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,6 +1582,7 @@ GameObject:
   - component: {fileID: 1095878347}
   - component: {fileID: 1095878346}
   - component: {fileID: 1095878350}
+  - component: {fileID: 1095878351}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1670,6 +1684,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditsScreen: {fileID: 906387411}
+  pauseButtonCanvasGroup: {fileID: 1095878351}
+--- !u!225 &1095878351
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095878345}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1109203699
 GameObject:
   m_ObjectHideFlags: 0
