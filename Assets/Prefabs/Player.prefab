@@ -152,7 +152,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.75
+  m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -637,16 +637,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b5e53311454904e94ea1e148674949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelSpeed: 8
+  baseSpeed: 7
   maxHealth: 100
   healthPerSecond: 0
   hitPower: 1
   attackBox: {fileID: 4420595376170878395}
   cooldownMax: 1
   dashMax: 0.5
-  dashSpeedModifier: 4
-  scytheRenderer: {fileID: 1032813254335321350}
   tr: {fileID: 5111501678446728150}
+  dashSpeedMultiplier: 4
+  scythe: {fileID: 5453608199632274676}
+  speedMultplier: 1.5
+  swingSpeedMultiplier: 2
+  scytheScaleMultiplier: 2
 --- !u!54 &8284753971223826495
 Rigidbody:
   m_ObjectHideFlags: 0
