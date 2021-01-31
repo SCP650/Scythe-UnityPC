@@ -673,10 +673,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actorModel: {fileID: 11400000, guid: 7a6a0d576f734bc4fb681fb0aa23c7b7, type: 2}
   spawnRate: 0.5
-  quantity: 40
+  quantityInWave: 30
   MapLength: 100
   MapWidth: 100
   Player: {fileID: 743159203}
+  WaitBetweenWaves: 20
 --- !u!4 &1372882025
 Transform:
   m_ObjectHideFlags: 0
