@@ -5,6 +5,8 @@ public class EnemySpawner : MonoBehaviour
 {
  [SerializeField]
  SOActorModel actorModel;
+	[SerializeField]
+	SOActorModel ShooterEnemy;
  [SerializeField]
  float spawnRate;
  [SerializeField]
@@ -50,9 +52,24 @@ private int currentEnemyCount;
   
   GameObject CreateEnemy()
   {
-	GameObject enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
-	enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
-		enemy.GetComponent<Enemy>().target = Player;
+		GameObject enemy;
+		if(currentEnemyCount > 40 && currentEnemyCount %7 == 0)
+        {
+			  enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
+			enemy.GetComponent<ShooterEnemy>().target = Player;
+			enemy.GetComponent<IActorTemplate>().ActorStats(ShooterEnemy);
+		}
+        else
+        {
+			//enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
+			//enemy.GetComponent<Enemy>().target = Player;
+			//enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
+			enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
+			enemy.GetComponent<ShooterEnemy>().target = Player;
+			enemy.GetComponent<IActorTemplate>().ActorStats(ShooterEnemy);
+		}
+		
+		
 		enemy.name = actorModel.actorName.ToString();
 	return enemy;
   }
