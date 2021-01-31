@@ -721,6 +721,7 @@ MonoBehaviour:
   trackedValues:
   - type: 0
     watchedValue: 0.4
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
@@ -753,6 +754,7 @@ MonoBehaviour:
           m_CallState: 2
   - type: 1
     watchedValue: 0.3
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
@@ -785,6 +787,7 @@ MonoBehaviour:
           m_CallState: 2
   - type: 1
     watchedValue: 0.6
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
@@ -817,6 +820,7 @@ MonoBehaviour:
           m_CallState: 2
   - type: 1
     watchedValue: 0.9
+    killsToActivate: 0
     onCrossOver:
       m_PersistentCalls:
         m_Calls:
