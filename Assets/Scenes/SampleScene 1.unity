@@ -917,6 +917,18 @@ PrefabInstance:
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7234810580915330479, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570815204199114946, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134778991014017903, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8413241741809566236, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
       propertyPath: shakeyTextBox
       value: 
@@ -1024,6 +1036,30 @@ PrefabInstance:
     - target: {fileID: 8498202758217300926, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498202759335906228, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a6cddb931887a94789d2c169cd0988b, type: 2}
+    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8817908429682025045, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
       propertyPath: m_IsActive
@@ -1255,6 +1291,14 @@ PrefabInstance:
       value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1273,6 +1317,14 @@ PrefabInstance:
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[3].onCrossOver.m_PersistentCalls.m_Calls.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -1295,6 +1347,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2040308396}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2040308396}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2040308396}
@@ -1314,6 +1374,14 @@ PrefabInstance:
       propertyPath: trackedValues.Array.data[3].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2040308396}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -1335,6 +1403,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EndGloweyMessage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: GloweyMessage5Seconds
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: EndShakeyMessage
       objectReference: {fileID: 0}
@@ -1353,6 +1429,14 @@ PrefabInstance:
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[3].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: StartDeathMessage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -1379,12 +1463,28 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: I feel fast... Press shift to dash
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: My wounds are healing...
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[3].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: trackedValues.Array.data[0].onCrossOver.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[1].onCrossBack.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName

@@ -5237,7 +5237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 4534375989831579340}
-  shakeyTextBox: {fileID: 0}
+  shakeyTextBox: {fileID: 8775705185537907632}
+  gloweyTextBox: {fileID: 3866425670736794136}
 --- !u!1 &8498202758329616989
 GameObject:
   m_ObjectHideFlags: 0
@@ -5552,7 +5553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: df241ae9fd95e4340bb17bc53cef3eb0, type: 2}
+  m_Material: {fileID: 2100000, guid: 8a6cddb931887a94789d2c169cd0988b, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
