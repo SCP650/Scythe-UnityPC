@@ -1350,5 +1350,9 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 6142731343195453219, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
+      propertyPath: cooldownMax
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
