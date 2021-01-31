@@ -350,4 +350,14 @@ public class Player : MonoBehaviour, IActorTemplate
 
 		renderer.material = baseMaterial;
 	}
+
+	public void PlaySoulSound()
+    {
+		SoundManager.S.PlaySoulBlinkSound();
+    }
+
+	public void StopSoulSound()
+	{
+		SoundManager.S.StopSoulBlinkSound();
+	}
 }

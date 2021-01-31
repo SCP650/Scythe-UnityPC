@@ -41,6 +41,7 @@ public class SoundManager : MonoBehaviour
         if (scytheSwingSound.isPlaying) scytheSwingSound.Stop();
         scytheSwingSound.Play();
     }
+
     public void PlayDeathSound()
     {
         if (scytheSwingSound.isPlaying) deathSound.Stop();
@@ -50,6 +51,11 @@ public class SoundManager : MonoBehaviour
     public void PlaySoulBlinkSound()
     {
         soulBlinkSound.Play();
+    }
+
+    public void StopSoulBlinkSound()
+    {
+        soulBlinkSound.Stop();
     }
 
     public void PlayDashSound()

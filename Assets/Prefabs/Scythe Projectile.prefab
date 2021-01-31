@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 25
-  timeToStayAlive: 3
+  timeToStayAlive: 2
 --- !u!65 &8592422371665798290
 BoxCollider:
   m_ObjectHideFlags: 0

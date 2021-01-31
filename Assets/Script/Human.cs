@@ -96,8 +96,8 @@ public void Flee()
 		if (health <= 0)
 		{
 			GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
-			Die();
 				SoundManager.S.PlayDeathSound();
+				Die();
 			}
 	}
  }

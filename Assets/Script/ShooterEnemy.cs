@@ -35,7 +35,7 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
 
     void Update ()
  {
-		agent.destination = target.position;
+		if (target != null) agent.destination = target.position;
 	 
 		Attack();
  }
@@ -106,9 +106,9 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
  public void TakeDamage(int incomingDamage)
  {
 	health -= incomingDamage;
-		SoundManager.S.PlayDeathSound();
 		if (health < 0)
-        {
+		{
+			SoundManager.S.PlayDeathSound();
 			Die();
         }
  }
