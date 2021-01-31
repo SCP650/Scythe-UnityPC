@@ -16,6 +16,7 @@ public struct SoulTracker
 {
     public SlayType type;
     public float watchedValue;
+    public int killsToActivate;
     public UnityEvent onCrossOver;
     public UnityEvent onCrossBack;
 }
@@ -52,6 +53,7 @@ public class Soul : MonoBehaviour
     public int startTrackingAt;
 
     public List<SoulTracker> trackedValues;
+    private List<SoulTracker> heldValues = new List<SoulTracker>();
 
     public float percentDemonSlayer = 0;
     public float percentHumanSlayer = 0;
@@ -60,7 +62,14 @@ public class Soul : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+       for (int i = trackedValues.Count - 1; i >= 0; i--)
+        {
+            if (trackedValues[i].killsToActivate > 0)
+            {
+                heldValues.Add(trackedValues[i]);
+                trackedValues.RemoveAt(i);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -123,9 +132,43 @@ public class Soul : MonoBehaviour
                 }
             }
 
-        percentDemonSlayer = newDemonPercent;
-        percentHumanSlayer = newHumanPercent;
-        percentMixedSlayer = newMixedPercent;
+            for (int i = heldValues.Count - 1; i >= 0; i--)
+            {
+                if (numKilled > heldValues[i].killsToActivate)
+                {
+                    //We should add it to the list
+                    trackedValues.Add(heldValues[i]);
+
+                    //Check if it should fire
+                    float newVal = 0;
+                    switch (heldValues[i].type)
+                    {
+                        case SlayType.Human:
+                            newVal = newHumanPercent;
+                            break;
+                        case SlayType.Demon:
+                            newVal = newDemonPercent;
+                            break;
+                        case SlayType.Mixed:
+                            newVal = newMixedPercent;
+                            break;
+                    }
+                    if (newVal > heldValues[i].watchedValue)
+                    {
+                        heldValues[i].onCrossOver.Invoke();
+                    }
+
+                    //Check if it should be removed
+                    heldValues.RemoveAt(i);
+                }
+            }
+
+
+
+            percentDemonSlayer = newDemonPercent;
+            percentHumanSlayer = newHumanPercent;
+            percentMixedSlayer = newMixedPercent;
+            
 
         }
 
