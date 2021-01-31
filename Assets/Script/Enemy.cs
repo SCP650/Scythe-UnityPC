@@ -73,7 +73,8 @@ private void OnCollisionEnter(Collision collision)
  public void TakeDamage(int incomingDamage)
  {
 	health -= incomingDamage;
-	if(health < 0)
+		SoundManager.S.PlayDeathSound();
+		if (health < 0)
         {
 			Die();
         }

@@ -85,26 +85,27 @@ public void Flee()
 			if (LayerMask.LayerToName(other.gameObject.layer) == "Projectile")
             {
 				health -= Player.S.SendDamage();
-            }
+				}
 			else
 			{
 				IActorTemplate temp = other.GetComponentInParent<IActorTemplate>();
 					if (temp == null) health -= Player.S.SendDamage();
 					else health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
-			}
+				}
 		}
 		if (health <= 0)
 		{
 			GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
 			Die();
-		}
+				SoundManager.S.PlayDeathSound();
+			}
 	}
  }
  
  public void TakeDamage(int incomingDamage)
  {
 	health -= incomingDamage;
- }
+	}
  
  public int SendDamage()
  {
