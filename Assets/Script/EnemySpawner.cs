@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
  [SerializeField]
  float spawnRate;
  [SerializeField]
- [Range(0,10)]
+ [Range(0,40)]
  int quantity;
  [SerializeField] int MapLength;
  [SerializeField] int MapWidth;

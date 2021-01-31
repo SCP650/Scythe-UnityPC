@@ -39,9 +39,10 @@ public class Enemy : MonoBehaviour, IActorTemplate
 
  
     public void Die()
- {
-	Destroy(this.gameObject);
- }
+	{
+		Soul.singleton.numDemons++;
+		Destroy(this.gameObject);
+	}
 
 private void OnCollisionEnter(Collision collision)
 {
@@ -72,8 +73,8 @@ private void OnCollisionEnter(Collision collision)
         {
 			Die();
         }
-       
  }
+
  
  public int SendDamage()
  {

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2754535102034577170}
   - component: {fileID: 8457739283652152746}
   - component: {fileID: 3647938322324467906}
+  - component: {fileID: 5108195612353641701}
   m_Layer: 0
   m_Name: Scythe
-  m_TagString: Untagged
+  m_TagString: AttackBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,11 +92,24 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292503770900457366}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &5108195612353641701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292503770900457366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 0.1}
+  m_Center: {x: -1.5, y: 0, z: -0.4}
 --- !u!1 &1934193230350026028
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +121,6 @@ GameObject:
   - component: {fileID: 6859508101082087259}
   - component: {fileID: 8433803023423691586}
   - component: {fileID: 3880689403660621876}
-  - component: {fileID: 5188212212932240280}
   m_Layer: 0
   m_Name: Test Target
   m_TagString: Untagged
@@ -144,7 +157,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934193230350026028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -178,19 +191,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5188212212932240280
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934193230350026028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4137928178855524051
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +392,9 @@ MonoBehaviour:
   travelSpeed: 8
   hitPower: 1
   attackBox: {fileID: 4420595376170878395}
+  cooldownMax: 1.5
+  dashMax: 0.5
+  dashSpeedModifier: 3
 --- !u!54 &8284753971223826495
 Rigidbody:
   m_ObjectHideFlags: 0
