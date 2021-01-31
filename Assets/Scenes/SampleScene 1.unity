@@ -553,8 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorModel: {fileID: 11400000, guid: a75c51da01dbf4a22965b6cbc6897901, type: 2}
-  spawnRate: 0.5
-  quantity: 10
+  spawnRate: 0.7
+  quantity: 25
   MapLength: 100
   MapWidth: 100
   Player: {fileID: 743159203}
