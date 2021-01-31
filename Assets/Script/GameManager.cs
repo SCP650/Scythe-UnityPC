@@ -2,7 +2,7 @@
 
 public class GameManager : MonoBehaviour 
 {
-	public static int playerLives = 3;
+	public static int playerLives = 1;
 	public static int currentScene = 0;
 	public static int gameLevelScene = 3;
 	static GameManager instance;
@@ -58,18 +58,20 @@ public class GameManager : MonoBehaviour
 	
 	 public void LifeLost()
 	{
+		playerLives--;
 		//lose life
 		if (playerLives >= 1)
 		{
-			playerLives--;
+			
 			Debug.Log("Lives left:" +playerLives);
 			GetComponent<ScenesManager>().ResetScene();
 		}
 		    else
 		{
-			GetComponent<ScenesManager>().GameOver();
+			PlayerPrefs.SetInt("Current", GetComponent<ScoreManager>().PlayersScore);
 			//reset lives back to 3. 
 			playerLives = 3;
+			FadeController.S.InitiateFade("EndScene");
 		}
 	}
 }

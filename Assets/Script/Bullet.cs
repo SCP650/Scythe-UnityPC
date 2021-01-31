@@ -15,7 +15,11 @@ public class Bullet : MonoBehaviour, IActorTemplate
 
     void Update ()
  {
-		transform.position = Vector3.MoveTowards(transform.position, target.position, travelSpeed*Time.deltaTime);
+        if (target)
+        {
+			transform.position = Vector3.MoveTowards(transform.position, target.position, travelSpeed * Time.deltaTime);
+		}
+		
  }
  
  public void ActorStats(SOActorModel actorModel) //not being used
