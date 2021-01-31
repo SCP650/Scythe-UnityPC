@@ -6,7 +6,7 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
 {
 	int health;
 	float travelSpeed;
-	int fireSpeed;
+	int fireSpeed = 5;
 	int hitPower;
 	int score;
 	float time;

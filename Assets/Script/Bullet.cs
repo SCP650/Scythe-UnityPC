@@ -20,9 +20,7 @@ public class Bullet : MonoBehaviour, IActorTemplate
 
     void Update ()
  {
-
 		transform.position += forward * travelSpeed * Time.deltaTime;
-		Attack();
  }
  
  public void ActorStats(SOActorModel actorModel)
