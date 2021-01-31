@@ -63,8 +63,10 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
 			for (int i = 0; i < qty; i++)
             {
 				GameObject bullet = GameObject.Instantiate(bullets) as GameObject;
-				bullet.transform.position = gameObject.transform.position;
+				bullet.transform.position = gameObject.transform.position + new Vector3(1,0,1);
 				bullet.transform.rotation = gameObject.transform.rotation;
+
+				bullet.GetComponent<Bullet>().target = target;
 				yield return new WaitForSeconds(0.2f);
 			}
 			

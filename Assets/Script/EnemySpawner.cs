@@ -61,12 +61,12 @@ private int currentEnemyCount;
 		}
         else
         {
-			//enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
-			//enemy.GetComponent<Enemy>().target = Player;
-			//enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
-			enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
-			enemy.GetComponent<ShooterEnemy>().target = Player;
-			enemy.GetComponent<IActorTemplate>().ActorStats(ShooterEnemy);
+            enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
+            enemy.GetComponent<Enemy>().target = Player;
+            enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
+   //         enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
+			//enemy.GetComponent<ShooterEnemy>().target = Player;
+			//enemy.GetComponent<IActorTemplate>().ActorStats(ShooterEnemy);
 		}
 		
 		

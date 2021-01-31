@@ -16,7 +16,7 @@ MonoBehaviour:
   attackType: 0
   description: Enemy basic bullet.
   health: 1
-  speed: 700
+  speed: 10
   hitPower: 1
   actor: {fileID: 122580320229514914, guid: 2656da97e42234d8292dc5b98e111740, type: 3}
   actorsBullets: {fileID: 0}

@@ -4,31 +4,26 @@ using UnityEngine.AI;
 public class Bullet : MonoBehaviour, IActorTemplate
 {
  
-	float travelSpeed;
-	int hitPower;
-	int score;
-	float time;
+	float travelSpeed = 6;
+	int hitPower=5;
+	 
 
 	private Vector3 forward;
 	public Transform target; //can be the player or innocent, will be set by EnemySpawner
 
-
-    private void Start()
-    {
-		forward = transform.TransformDirection(Vector3.forward);
-	}
+	 
 
     void Update ()
  {
-		transform.position += forward * travelSpeed * Time.deltaTime;
+		transform.position = Vector3.MoveTowards(transform.position, target.position, travelSpeed*Time.deltaTime);
  }
  
- public void ActorStats(SOActorModel actorModel)
+ public void ActorStats(SOActorModel actorModel) //not being used
  {
  
 	travelSpeed = actorModel.speed;
 	hitPower = actorModel.hitPower;
-	score = actorModel.score;
+ 
  }
 
  
