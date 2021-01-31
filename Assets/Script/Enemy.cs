@@ -41,7 +41,8 @@ public class Enemy : MonoBehaviour, IActorTemplate
     public void Die()
 	{
 		Soul.singleton.numDemons++;
-		Destroy(this.gameObject);
+        GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
+        Destroy(this.gameObject);
 	}
 
 private void OnCollisionEnter(Collision collision)

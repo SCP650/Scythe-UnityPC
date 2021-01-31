@@ -51,6 +51,7 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
     public void Die()
 	{
 		Soul.singleton.numDemons++;
+		GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
 		Destroy(this.gameObject);
 	}
 
