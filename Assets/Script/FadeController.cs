@@ -36,6 +36,7 @@ public class FadeController : MonoBehaviour
 
     public void InitiateFade(string sceneName)
     {
+        Time.timeScale = 1.0f;
         StartCoroutine(Fade(sceneName));
     }
 

@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
  
    }
 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (Input.GetButtonDown("Pause"))
@@ -47,7 +52,7 @@ public class GameManager : MonoBehaviour
     {
 		Destroy(this.gameObject);
     }
-		DontDestroyOnLoad(this);
+		//DontDestroyOnLoad(this);
 	 
 	}
 	
