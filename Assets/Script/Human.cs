@@ -88,7 +88,9 @@ public void Flee()
             }
 			else
 			{
-				health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
+				IActorTemplate temp = other.GetComponentInParent<IActorTemplate>();
+					if (temp == null) health -= Player.S.SendDamage();
+					else health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
 			}
 		}
 		if (health <= 0)
