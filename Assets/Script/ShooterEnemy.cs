@@ -106,7 +106,8 @@ public class ShooterEnemy : MonoBehaviour, IActorTemplate
  public void TakeDamage(int incomingDamage)
  {
 	health -= incomingDamage;
-	if(health < 0)
+		SoundManager.S.PlayDeathSound();
+		if (health < 0)
         {
 			Die();
         }

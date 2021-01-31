@@ -177,6 +177,7 @@ public class Player : MonoBehaviour, IActorTemplate
 		if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
 		blinkCoroutine = StartCoroutine(BlinkHurt());
 		if (bloodParticleSystem) Instantiate(bloodParticleSystem, transform.position, transform.rotation);
+		SoundManager.S.PlayDeathSound();
 	}
  
 	public int SendDamage()
@@ -197,6 +198,7 @@ public class Player : MonoBehaviour, IActorTemplate
             {
 				isDashing = true;
 				StartCoroutine(Dash());
+				SoundManager.S.PlayDashSound();
 				return;
             }
 
@@ -233,7 +235,9 @@ public class Player : MonoBehaviour, IActorTemplate
 	public void Attack()
 	{
 		if ((Input.GetButtonDown("Attack") || Input.GetMouseButtonDown(0)) && !isAttacking)
-        {
+		{
+			SoundManager.S.PlaySwingSound();
+
 			isAttackingRight = !isAttackingRight;
 			playerAnimator.SetTrigger("attacking");
 			isAttacking = true;
@@ -275,7 +279,8 @@ public class Player : MonoBehaviour, IActorTemplate
         }
 		print("here");
 		isDashing = false;
-    }
+		SoundManager.S.PlayDashRecoverSound();
+	}
 
 	public void ChangeSpeed(bool increase = true)
     {
