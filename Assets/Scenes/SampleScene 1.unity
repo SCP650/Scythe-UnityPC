@@ -1230,26 +1230,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.31
       objectReference: {fileID: 0}
-    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
-      propertyPath: m_Maskable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 2100000, guid: 8a6cddb931887a94789d2c169cd0988b, type: 2}
-    - target: {fileID: 8498202759335906231, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8817908429682025045, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1541,7 +1521,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[2].onCrossOver.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5925499735514211352, guid: 9111420bba2634fd8ab1cfbd13c65c68, type: 3}
       propertyPath: trackedValues.Array.data[3].onCrossBack.m_PersistentCalls.m_Calls.Array.size
