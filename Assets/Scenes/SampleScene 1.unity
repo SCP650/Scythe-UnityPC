@@ -568,6 +568,7 @@ MonoBehaviour:
   MapLength: 100
   MapWidth: 100
   Player: {fileID: 743159203}
+  WaitBetweenWaves: 15
 --- !u!4 &991958353
 Transform:
   m_ObjectHideFlags: 0
