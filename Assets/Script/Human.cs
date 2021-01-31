@@ -42,14 +42,17 @@ public Transform target; //player
 
 public void Flee()
 {
-		float distance = Vector3.Distance(transform.position, target.position);
-		if(distance < EnemyDistanceToRun)
+		if (target != null)
         {
-			Vector3 disToPlayer = transform.position - target.transform.position;
-			Vector3 newPos = transform.position + disToPlayer;
-			agent.SetDestination(newPos);
-			agent.speed = 6;
-        }
+			float distance = Vector3.Distance(transform.position, target.position);
+			if (distance < EnemyDistanceToRun)
+			{
+				Vector3 disToPlayer = transform.position - target.transform.position;
+				Vector3 newPos = transform.position + disToPlayer;
+				agent.SetDestination(newPos);
+				agent.speed = 6;
+			}
+		}
 }
 
     public void Die()

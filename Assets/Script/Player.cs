@@ -39,6 +39,7 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	[SerializeField]
 	private GameObject attackBox;
+	private Vector3 attackBoxBaseScale;
 
 	public static Player S;
 
@@ -59,7 +60,7 @@ public class Player : MonoBehaviour, IActorTemplate
 	[SerializeField]
 	private Transform scythe;
 	private TrailRenderer scytheRenderer;
-	private float baseScytheScale;
+	private Vector3 baseScytheScale;
 	
 	private float swingBaseSpeed = 1;
 	private float swingSpeed;
@@ -111,7 +112,8 @@ public class Player : MonoBehaviour, IActorTemplate
 		scytheRenderer = scythe.GetComponent<TrailRenderer>();
 
 		currentSpeed = baseSpeed;
-		baseScytheScale = scythe.localScale.z;
+		baseScytheScale = scythe.localScale;
+		attackBoxBaseScale = attackBox.transform.localScale;
 		swingSpeed = swingBaseSpeed;
 	}
 
@@ -280,9 +282,17 @@ public class Player : MonoBehaviour, IActorTemplate
 	{
 		if (increase)
 		{
-			if (scythe.localScale.z < baseScytheScale * scytheScaleMultiplier) scythe.localScale = new Vector3(0, 0, baseScytheScale * scytheScaleMultiplier);
+			if (scythe.localScale.z < baseScytheScale.z * scytheScaleMultiplier)
+			{
+				scythe.localScale = new Vector3(baseScytheScale.x, baseScytheScale.y, baseScytheScale.z * scytheScaleMultiplier);
+				attackBox.transform.localScale = new Vector3(attackBoxBaseScale.x, attackBoxBaseScale.y, attackBoxBaseScale.z * scytheScaleMultiplier);
+			}
 		}
-		else scythe.localScale = new Vector3(0, 0, baseScytheScale);
+		else
+		{
+			scythe.localScale = baseScytheScale;
+			attackBox.transform.localScale = attackBoxBaseScale;
+		}
 	}
 
 	public void ToggleShootProojectile(bool projectileEnabled = true)
