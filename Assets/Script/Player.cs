@@ -65,6 +65,16 @@ public class Player : MonoBehaviour, IActorTemplate
 	private float swingBaseSpeed = 1;
 	private float swingSpeed;
 
+	[SerializeField]
+	private float blinkTime = 1;
+	[SerializeField]
+	private Color blinkColor = Color.red;
+	private Material baseMaterial;
+	[SerializeField]
+	private Renderer renderer;
+	[SerializeField]
+	private GameObject bloodParticleSystem;
+
 	[Header("Projectile")]
 	[SerializeField]
 	private GameObject projectile;
@@ -81,6 +91,8 @@ public class Player : MonoBehaviour, IActorTemplate
 	private float swingSpeedMultiplier = 2;
 	[SerializeField]
 	private float scytheScaleMultiplier = 2;
+
+	private Coroutine blinkCoroutine;
 
 	public int Health
     {
@@ -115,6 +127,8 @@ public class Player : MonoBehaviour, IActorTemplate
 		baseScytheScale = scythe.localScale;
 		attackBoxBaseScale = attackBox.transform.localScale;
 		swingSpeed = swingBaseSpeed;
+
+		baseMaterial = renderer.material;
 	}
 
 	void Update ()
@@ -160,6 +174,9 @@ public class Player : MonoBehaviour, IActorTemplate
 	public void TakeDamage(int incomingDamage)
 	{
 		health -= incomingDamage;
+		if (blinkCoroutine != null) StopCoroutine(blinkCoroutine);
+		blinkCoroutine = StartCoroutine(BlinkHurt());
+		if (bloodParticleSystem) Instantiate(bloodParticleSystem, transform.position, transform.rotation);
 	}
  
 	public int SendDamage()
@@ -299,4 +316,33 @@ public class Player : MonoBehaviour, IActorTemplate
     {
 		canShootProjectile = projectileEnabled;
     }
+
+	private IEnumerator BlinkHurt()
+	{
+		Color baseColor = baseMaterial.color;
+
+		float blinkTimer = 0.0f;
+		while (blinkTimer < blinkTime)
+        {
+			blinkTimer += Time.deltaTime;
+			Color newColor = Color.Lerp(baseColor, blinkColor, blinkTimer / blinkTime);
+			Material m = new Material(baseMaterial.shader);
+			m.color = newColor;
+			renderer.material = m;
+			yield return null;
+        }
+
+		blinkTimer = 0.5f;
+		while (blinkTimer < blinkTime)
+		{
+			blinkTimer += Time.deltaTime;
+			Color newColor = Color.Lerp(blinkColor, baseColor, blinkTimer / blinkTime);
+			Material m = new Material(baseMaterial.shader);
+			m.color = newColor;
+			m = renderer.material;
+			yield return null;
+		}
+
+		renderer.material = baseMaterial;
+	}
 }
