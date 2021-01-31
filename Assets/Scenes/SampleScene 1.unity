@@ -1014,6 +1014,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3305263021337756839, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305263021337756839, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3305263021337756839, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4534375989831579340, guid: 4b0ce729e31233149ad47bfb99814197, type: 3}
       propertyPath: ShapeModule.type
       value: 10
