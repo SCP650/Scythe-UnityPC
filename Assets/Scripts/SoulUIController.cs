@@ -59,8 +59,8 @@ public class SoulUIController : MonoBehaviour
     
     public void makeMixedPoint(float radius)
     {
-        print($"Making mixed point with rad {radius}");
-        print($"Percent mixed is {soul.percentMixedSlayer}");
+        //print($"Making mixed point with rad {radius}");
+        //print($"Percent mixed is {soul.percentMixedSlayer}");
         Vector4 point = new Vector4(Mathf.Cos(mixedDegree), Mathf.Sin(mixedDegree), 0.0f, 0.0f);
         point = point * radius + new Vector4(0.5f, 0.5f, 0.0f, 0.0f);
         mat.SetVector("_Coord1", point);

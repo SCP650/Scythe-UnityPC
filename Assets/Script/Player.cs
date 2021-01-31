@@ -118,7 +118,7 @@ public class Player : MonoBehaviour, IActorTemplate
 	public void PassivelyHeal()
     {
 		float healthBack = healthOverflow + healthPerSecond * Time.deltaTime;
-		print($"Health back on this fram is {healthBack}");
+		//print($"Health back on this fram is {healthBack}");
 		int intHealthback = (int)healthBack;
 		healthOverflow = healthBack - intHealthback;
 		health += intHealthback;
