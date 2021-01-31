@@ -28,10 +28,10 @@ public class HumanSpawner : MonoBehaviour
 		{
 			for (int i = 0; i < qty; i++)
 			{
-				GameObject enemyUnit = CreateEnemy();
+				Vector3 position = new Vector3(Random.Range(-MapWidth / 2, MapWidth / 2), 0, Random.Range(-MapLength / 2, MapLength / 2));
+				GameObject enemyUnit = CreateEnemy(position);
 				enemyUnit.gameObject.transform.SetParent(this.transform);
-				enemyUnit.transform.position = new Vector3(Random.Range(-MapWidth / 2, MapWidth / 2), 0, Random.Range(-MapLength / 2, MapLength / 2));
-
+				
 				//enemyUnit.transform.Rotate(0, Random.Range(0, 360), 0);
 
 				yield return new WaitForSeconds(spwnRte);
@@ -47,9 +47,9 @@ public class HumanSpawner : MonoBehaviour
 		}
 	}
   
-  GameObject CreateEnemy()
+  GameObject CreateEnemy(Vector3 position)
   {
-        GameObject enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
+        GameObject enemy = GameObject.Instantiate(actorModel.actor, position, Quaternion.identity) as GameObject;
         enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
 		enemy.GetComponent<Human>().target = Player;
 		enemy.name = actorModel.actorName.ToString();
