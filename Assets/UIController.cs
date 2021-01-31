@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] ParticleSystem blood;
     [SerializeField] TextMeshProUGUI shakeyTextBox;
+    [SerializeField] TextMeshProUGUI gloweyTextBox;
 
 
     // Start is called before the first frame update
@@ -74,4 +75,29 @@ public class UIController : MonoBehaviour
         yield return new WaitForSeconds(x);
         EndShakeyMessage();
     }
+
+    public void GloweyMessage(string text)
+    {
+        gloweyTextBox.text = text;
+        gloweyTextBox.gameObject.SetActive(true);
+    }
+
+    public void EndGloweyMessage()
+    {
+        gloweyTextBox.gameObject.SetActive(false);
+    }
+
+    public void GloweyMessage5Seconds(string Text)
+    {
+        StartCoroutine(GloweyMessageForXSeconds(Text, 5f));
+    }
+
+    IEnumerator GloweyMessageForXSeconds(string text, float x)
+    {
+        GloweyMessage(text);
+        yield return new WaitForSeconds(x);
+        EndGloweyMessage();
+    }
+
+
 }
