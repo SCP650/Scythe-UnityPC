@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
  [SerializeField] Transform Player;
 	[SerializeField] float WaitBetweenWaves;
 
-private int currentEnemyCount;
+private int currentEnemyCount = 1;
 
 	void Awake()
  {
@@ -30,6 +30,7 @@ private int currentEnemyCount;
         {
 			for (int i = 0; i < qty; i++)
 			{
+				currentEnemyCount += i;
 				GameObject enemyUnit = CreateEnemy();
 				enemyUnit.gameObject.transform.SetParent(this.transform);
 				enemyUnit.transform.position = new Vector3(Random.Range(-MapWidth / 2, MapWidth / 2), 0, Random.Range(-MapLength / 2, MapLength / 2));
@@ -38,7 +39,7 @@ private int currentEnemyCount;
 
 				yield return new WaitForSeconds(spwnRte);
 			}
-			currentEnemyCount += qty;
+			
             if (currentEnemyCount%4 == 0)
             {
 				WaitBetweenWaves *= 0.8f;
@@ -53,7 +54,8 @@ private int currentEnemyCount;
   GameObject CreateEnemy()
   {
 		GameObject enemy;
-		if(currentEnemyCount > 40 && currentEnemyCount %7 == 0)
+ 
+		if(currentEnemyCount %7 == 0)
         {
 			  enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
 			enemy.GetComponent<ShooterEnemy>().target = Player;

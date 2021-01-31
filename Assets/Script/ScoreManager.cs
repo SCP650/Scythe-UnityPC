@@ -13,6 +13,8 @@
 	
 	  public void SetScore(int incomingScore)
     {
+   
         playerScore += incomingScore;
+        print("Curr Score is:" + playerScore);
     }
 }

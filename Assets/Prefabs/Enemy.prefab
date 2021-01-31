@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  bloodParticleSystemPrefab: {fileID: 5753816198695974468, guid: 7cd39afdcdb9e8749a343f98c3583935, type: 3}
 --- !u!195 &5096909163876950079
 NavMeshAgent:
   m_ObjectHideFlags: 0

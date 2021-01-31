@@ -13,11 +13,12 @@ public class Human : MonoBehaviour, IActorTemplate
 public Transform target; //player
 	public float EnemyDistanceToRun = 5.0f;
 
-
 	private NavMeshAgent agent;
 
+	[SerializeField]
+	private GameObject bloodParticleSystemPrefab;
 
-    private void Start()
+	private void Start()
     {
 		
 		agent = GetComponent<NavMeshAgent>();
@@ -54,7 +55,8 @@ public void Flee()
     public void Die()
  {
 		Soul.singleton.numHumans++;
-	Destroy(this.gameObject);
+		if (bloodParticleSystemPrefab) Instantiate(bloodParticleSystemPrefab, transform.position, transform.rotation);
+		Destroy(this.gameObject);
  }
  
  void OnTriggerEnter(Collider other)
@@ -76,7 +78,15 @@ public void Flee()
     {
 		if (health >= 1)
 		{
-			health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
+			// Projectile layer
+			if (LayerMask.LayerToName(other.gameObject.layer) == "Projectile")
+            {
+				health -= Player.S.SendDamage();
+            }
+			else
+			{
+				health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
+			}
 		}
 		if (health <= 0)
 		{
