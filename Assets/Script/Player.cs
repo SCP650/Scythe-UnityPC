@@ -34,6 +34,10 @@ public class Player : MonoBehaviour, IActorTemplate
 	private float dashMax = 0.5f;
 	[SerializeField]
 	private float dashSpeedModifier = 3.0f;
+	[SerializeField]
+	private TrailRenderer scytheRenderer;
+	[SerializeField]
+	private TrailRenderer tr;
 
 	public int Health
     {
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour, IActorTemplate
 		playerAnimator.SetBool("right", isAttackingRight);
 		isAttacking = attackBox.activeSelf;
 
-		Attack();
+		if (!blockRotation)  Attack();
 	}
 
 	void FixedUpdate()
@@ -124,6 +128,7 @@ public class Player : MonoBehaviour, IActorTemplate
 				rb.MoveRotation(Quaternion.LookRotation(diff));
 			}
 		}
+		tr.enabled = isDashing;
 	}
 	
 	public void Die()
@@ -145,6 +150,7 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	private IEnumerator AttackCooldown()
     {
+		scytheRenderer.enabled = true;
 		float cooldownTimer = 0;
 		while (cooldownMax > cooldownTimer)
         {
@@ -153,10 +159,13 @@ public class Player : MonoBehaviour, IActorTemplate
 			yield return null;
         }
 		blockRotation = false;
-    }
+		scytheRenderer.Clear();
+		scytheRenderer.enabled = false;
+	}
 	
 	private IEnumerator Dash()
     {
+		tr.Clear();
 		float dashTimer = 0;
 		while (dashMax > dashTimer)
 		{
