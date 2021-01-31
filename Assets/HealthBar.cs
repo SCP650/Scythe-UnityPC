@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print($"Health is {player.Health}");
+        //print($"Health is {player.Health}");
         img.fillAmount = ((float)player.Health / maxHealth);
     }
 }

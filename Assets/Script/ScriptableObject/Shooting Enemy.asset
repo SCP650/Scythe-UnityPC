@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 454270ba86f08ae4fab2ebf16b834170, type: 3}
-  m_Name: PlayerBullet
+  m_Name: Shooting Enemy
   m_EditorClassIdentifier: 
-  actorName: player_bullet
-  attackType: 2
-  description: Players basic bullet.
-  health: 1
-  speed: 700
-  hitPower: 1
-  actor: {fileID: 0}
-  actorsBullets: {fileID: 0}
-  score: 0
+  actorName: shooting_enemy
+  attackType: 0
+  description: These enemies shoot
+  health: 3
+  speed: 0.1
+  hitPower: 2
+  actor: {fileID: 4179899809963747741, guid: 21932e47aea0e4a93ac5f2026f8cf1bc, type: 3}
+  actorsBullets: {fileID: 122580320229514914, guid: 2656da97e42234d8292dc5b98e111740, type: 3}
+  score: 200
