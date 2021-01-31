@@ -64,6 +64,15 @@ public class Player : MonoBehaviour, IActorTemplate
 	private float swingBaseSpeed = 1;
 	private float swingSpeed;
 
+	[Header("Projectile")]
+	[SerializeField]
+	private GameObject projectile;
+	[SerializeField]
+	private float projectileForce;
+	[SerializeField]
+	private Transform spawnLocation;
+	private bool canShootProjectile;
+
 	[Header("Multipliers for Bonuses")]
 	[SerializeField]
 	private float speedMultplier = 1.5f;
@@ -110,6 +119,7 @@ public class Player : MonoBehaviour, IActorTemplate
 	{
 		playerAnimator.SetBool("right", isAttackingRight);
 		isAttacking = attackBox.activeSelf;
+		scythe.tag = isAttacking ? "AttackBox" : "Untagged";
 
 		if (!blockRotation)  Attack();
 		PassivelyHeal();
@@ -209,6 +219,13 @@ public class Player : MonoBehaviour, IActorTemplate
 			playerAnimator.SetTrigger("attacking");
 			isAttacking = true;
 			StartCoroutine(AttackCooldown());
+
+			if (canShootProjectile)
+            {
+				GameObject projectileObj = Instantiate(projectile, spawnLocation.position, transform.rotation);
+				Vector3 forceVector = projectileForce * transform.forward;
+				projectileObj.GetComponent<Rigidbody>().AddForce(-forceVector, ForceMode.VelocityChange);
+			}
 		}
 	}
 
@@ -267,4 +284,9 @@ public class Player : MonoBehaviour, IActorTemplate
 		}
 		else scythe.localScale = new Vector3(0, 0, baseScytheScale);
 	}
+
+	public void ToggleShootProojectile(bool projectileEnabled = true)
+    {
+		canShootProjectile = projectileEnabled;
+    }
 }

@@ -230,12 +230,12 @@ GameObject:
   - component: {fileID: 8433803023423691586}
   - component: {fileID: 3880689403660621876}
   m_Layer: 0
-  m_Name: Test Target
+  m_Name: Spawn Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6859508101082087259
 Transform:
   m_ObjectHideFlags: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 7730511096759886294}
   - component: {fileID: 2007085472486481095}
   - component: {fileID: 5821986289068357141}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackBox
   m_TagString: AttackBox
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 1813101647476060581}
   - component: {fileID: 7879039782974777568}
   - component: {fileID: 5925499735514211352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -647,6 +647,9 @@ MonoBehaviour:
   tr: {fileID: 5111501678446728150}
   dashSpeedMultiplier: 4
   scythe: {fileID: 5453608199632274676}
+  projectile: {fileID: 7642687658275682471, guid: f8dc508055029ce418c92450a04c8199, type: 3}
+  projectileForce: 30
+  spawnLocation: {fileID: 6859508101082087259}
   speedMultplier: 1.5
   swingSpeedMultiplier: 2
   scytheScaleMultiplier: 2

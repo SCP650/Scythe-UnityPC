@@ -76,7 +76,15 @@ public void Flee()
     {
 		if (health >= 1)
 		{
-			health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
+			// Projectile layer
+			if (LayerMask.LayerToName(other.gameObject.layer) == "Projectile")
+            {
+				health -= Player.S.SendDamage();
+            }
+			else
+			{
+				health -= other.GetComponentInParent<IActorTemplate>().SendDamage();
+			}
 		}
 		if (health <= 0)
 		{

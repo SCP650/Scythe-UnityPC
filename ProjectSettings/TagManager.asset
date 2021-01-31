@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - AttackBox
+  - Stone
+  - Bush
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -15,8 +18,8 @@ TagManager:
   - 
   - 
   - Monster
-  - 
-  - 
+  - Projectile
+  - Ignore Projectile
   - 
   - 
   - 
