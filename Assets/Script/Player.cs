@@ -4,9 +4,10 @@ using System.Collections;
 public class Player : MonoBehaviour, IActorTemplate
 {
 	[SerializeField]
-    float travelSpeed;
+	private float baseSpeed;
+	float currentSpeed;
 
-    int health;
+	int health;
 	[SerializeField]
 	int maxHealth;
 	float healthOverflow;
@@ -50,14 +51,32 @@ public class Player : MonoBehaviour, IActorTemplate
 	[SerializeField]
 	private float dashMax = 0.5f;
 	[SerializeField]
-	private float dashSpeedModifier = 3.0f;
+	private TrailRenderer tr;
+
+	[SerializeField]
+	private float dashSpeedMultiplier = 4.0f;
+
+	[SerializeField]
+	private Transform scythe;
+	private TrailRenderer scytheRenderer;
+	private float baseScytheScale;
+	
+	private float swingBaseSpeed = 1;
+	private float swingSpeed;
+
+	[Header("Multipliers for Bonuses")]
+	[SerializeField]
+	private float speedMultplier = 1.5f;
+	[SerializeField]
+	private float swingSpeedMultiplier = 2;
+	[SerializeField]
+	private float scytheScaleMultiplier = 2;
 
 	public int Health
     {
         get {return health;}
         set {health = value;}
     }
-
    
     public GameObject Fire
     {
@@ -79,6 +98,12 @@ public class Player : MonoBehaviour, IActorTemplate
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
 		health = maxHealth;
 		healthPerSecond = 0;
+
+		scytheRenderer = scythe.GetComponent<TrailRenderer>();
+
+		currentSpeed = baseSpeed;
+		baseScytheScale = scythe.localScale.z;
+		swingSpeed = swingBaseSpeed;
 	}
 
 	void Update ()
@@ -86,9 +111,8 @@ public class Player : MonoBehaviour, IActorTemplate
 		playerAnimator.SetBool("right", isAttackingRight);
 		isAttacking = attackBox.activeSelf;
 
+		if (!blockRotation)  Attack();
 		PassivelyHeal();
-
-		Attack();
 	}
 
 	public void PassivelyHeal()
@@ -116,7 +140,7 @@ public class Player : MonoBehaviour, IActorTemplate
 	public void ActorStats(SOActorModel actorModel)
 	{
 		health = actorModel.health;
-		travelSpeed = actorModel.speed;
+		currentSpeed = actorModel.speed;
 		hitPower = actorModel.hitPower;
 		fire = actorModel.actorsBullets;
 	}
@@ -150,7 +174,7 @@ public class Player : MonoBehaviour, IActorTemplate
 			float x = Input.GetAxis("Horizontal");
 			float z = Input.GetAxis("Vertical");
 
-			rb.MovePosition(transform.position + new Vector3(x, 0, z) * travelSpeed * Time.fixedDeltaTime);
+			rb.MovePosition(transform.position + new Vector3(x, 0, z) * currentSpeed * Time.fixedDeltaTime);
 
 			if (x == 0 && z == 0)
 			{
@@ -168,6 +192,7 @@ public class Player : MonoBehaviour, IActorTemplate
 				rb.MoveRotation(Quaternion.LookRotation(diff));
 			}
 		}
+		tr.enabled = isDashing;
 	}
 	
 	public void Die()
@@ -189,6 +214,7 @@ public class Player : MonoBehaviour, IActorTemplate
 
 	private IEnumerator AttackCooldown()
     {
+		scytheRenderer.enabled = true;
 		float cooldownTimer = 0;
 		while (cooldownMax > cooldownTimer)
         {
@@ -197,18 +223,48 @@ public class Player : MonoBehaviour, IActorTemplate
 			yield return null;
         }
 		blockRotation = false;
-    }
+		scytheRenderer.Clear();
+		scytheRenderer.enabled = false;
+	}
 	
 	private IEnumerator Dash()
     {
+		tr.Clear();
 		float dashTimer = 0;
 		while (dashMax > dashTimer)
 		{
 			dashTimer += Time.deltaTime;
-			rb.MovePosition(transform.position - transform.forward * dashSpeedModifier * Time.deltaTime * (dashMax / dashTimer));
+			rb.MovePosition(transform.position - transform.forward * dashSpeedMultiplier * Time.deltaTime * (dashMax / dashTimer));
 			yield return null;
         }
 		print("here");
 		isDashing = false;
     }
+
+	public void ChangeSpeed(bool increase = true)
+    {
+		if (increase)
+		{
+			if (currentSpeed < baseSpeed * speedMultplier) currentSpeed *= speedMultplier;
+		}
+		else currentSpeed = baseSpeed;
+	}
+
+	public void ChangeSwingSpeed(bool increase = true)
+	{
+		if (increase)
+		{
+			if (playerAnimator.speed < swingBaseSpeed * swingSpeedMultiplier) playerAnimator.speed *= swingSpeedMultiplier;
+		}
+		else playerAnimator.speed = swingBaseSpeed;
+	}
+
+	public void ChangeScytheSize(bool increase = true)
+	{
+		if (increase)
+		{
+			if (scythe.localScale.z < baseScytheScale * scytheScaleMultiplier) scythe.localScale = new Vector3(0, 0, baseScytheScale * scytheScaleMultiplier);
+		}
+		else scythe.localScale = new Vector3(0, 0, baseScytheScale);
+	}
 }
