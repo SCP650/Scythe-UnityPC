@@ -58,7 +58,8 @@ private int currentEnemyCount = 1;
  
 		if(currentEnemyCount %7 == 0)
         {
-			  enemy = GameObject.Instantiate(ShooterEnemy.actor,position, Quaternion.identity) as GameObject;
+			  enemy = GameObject.Instantiate(ShooterEnemy.actor) as GameObject;
+			enemy.transform.position = position;
 			enemy.GetComponent<ShooterEnemy>().target = Player;
 			enemy.GetComponent<IActorTemplate>().ActorStats(ShooterEnemy);
 		}
